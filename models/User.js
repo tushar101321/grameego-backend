@@ -36,7 +36,7 @@ const userSchema = new mongoose.Schema(
     },
 
     // For shop accounts: which shop they manage.
-    // This should match one of the ids from backend/data/shops.js (e.g. "shop1", "shop2", ...)
+    // This will match one of the ids from backend/data/shops.js (e.g. "shop1", "shop2", ...)
     shopId: {
       type: String,
     },
