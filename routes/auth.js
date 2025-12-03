@@ -50,7 +50,7 @@ router.post("/signup", async (req, res) => {
       return res.status(409).json({ message: "Mobile already registered." });
     }
 
-    // If role is "shop", we require a valid shopId from our static shops
+    // If role is "shop", require a valid shopId from our static shops
     let finalShopId = null;
     if (role === "shop") {
       if (!shopId) {
