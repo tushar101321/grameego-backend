@@ -31,7 +31,7 @@ router.post("/", requireAuth, async (req, res) => {
       return res.status(400).json({ message: "itemDescription and contactNumber are required" });
     }
 
-    // Use provided village or fall back to the user’s stored village (if you added it to profile/me)
+    // Use provided village or fall back to the user’s stored village
     const v = village || req.body.village || "Unknown";
 
     const doc = await Delivery.create({
@@ -61,7 +61,5 @@ router.get("/mine", requireAuth, async (req, res) => {
   }
 });
 
-// (Optional) keep your previous public GET if you had one:
-// router.get("/", async (req,res)=>{ const all = await Delivery.find().sort({createdAt:-1}); res.json(all); });
 
 export default router;
