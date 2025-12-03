@@ -3,14 +3,14 @@ import mongoose from "mongoose";
 
 const DeliverySchema = new mongoose.Schema(
   {
-    // Who created the request (customer)
+    // Request created by (customer)
     createdBy: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
       required: true,
     },
 
-    // Human-readable summary of items / basket
+    // summary of items / basket
     itemDescription: {
       type: String,
       required: true,
