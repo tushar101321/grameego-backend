@@ -61,7 +61,7 @@ function requireShopRole(req, res, next) {
  * GET /api/shops/my/orders
  * For logged-in shop accounts:
  * Returns all deliveries that target this shop (by shopId),
- * newest first.
+ 
  */
 router.get("/my/orders", requireAuth, requireShopRole, async (req, res) => {
   try {
@@ -125,9 +125,7 @@ router.patch(
         d.shopConfirmationAt = new Date();
         if (note) d.shopNote = String(note).slice(0, 300);
 
-        // Optionally make it non-attractive to drivers:
-        // keep deliveryStatus as "Pending" but with Rejected flag,
-        // and we'll filter these from "available" list on driver side later if needed.
+      
       }
 
       await d.save();
