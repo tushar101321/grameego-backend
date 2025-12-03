@@ -48,7 +48,7 @@ router.post("/", requireAuth, async (req, res) => {
       estimatedDistanceKm,
       needByAt,
 
-      // from frontend basket snapshot (optional but we support it)
+      // from frontend basket snapshot
       items,
       productTotal,
       deliveryFee,
@@ -67,7 +67,7 @@ router.post("/", requireAuth, async (req, res) => {
 
     const finalVillage =
       (village || "").trim() ||
-      ""; // if you want: || (await find user village) but keeping simple
+      ""; 
 
     if (!finalVillage) {
       return res.status(400).json({ message: "village is required" });
@@ -93,7 +93,7 @@ router.post("/", requireAuth, async (req, res) => {
       needByDate = t;
     }
 
-    // Normalize optional items snapshot safely
+    // Normalise optional items snapshot safely
     const safeItems = Array.isArray(items)
       ? items.map((it) => ({
           id: String(it.id || ""),
@@ -176,7 +176,6 @@ router.get("/mine", requireAuth, async (req, res) => {
 // --------------------------------------------------------
 // GET /api/deliveries/available  (driver views pending jobs)
 // For now: all Pending requests, regardless of shopConfirmationStatus.
-// Later we can restrict to Accepted only if you want stricter flow.
 // --------------------------------------------------------
 router.get("/available", requireAuth, async (req, res) => {
   try {
