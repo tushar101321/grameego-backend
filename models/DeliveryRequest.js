@@ -38,12 +38,7 @@ const DeliverySchema = new mongoose.Schema(
       required: true,
     },
 
-    /**
-     * Logical shop identifier:
-     * - For static shops (from backend/data/shops.js), this should match s.id ("shop1", "shop2", ...)
-     * - For future dynamic shops, you can store their ID / code here.
-     * Used so "shop" users can filter only their orders.
-     */
+    
     shopId: {
       type: String,
       index: true,
@@ -84,8 +79,7 @@ const DeliverySchema = new mongoose.Schema(
      * - "Pending": customer placed order, waiting for shop decision
      * - "Accepted": shop has confirmed items are available / will prepare
      * - "Rejected": shop declined (e.g., out of stock)
-     *
-     * Driver should ideally only accept jobs that are "Accepted" or at least visible with this flag.
+     
      */
     shopConfirmationStatus: {
       type: String,
@@ -103,8 +97,7 @@ const DeliverySchema = new mongoose.Schema(
       default: "",
     },
 
-    // Optional: normalized items snapshot for future (already being sent from frontend)
-    // Not strictly required, but you’re already passing items/productTotal/etc from frontend.
+    
     items: [
       {
         id: String,
